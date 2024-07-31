@@ -8,4 +8,6 @@ def add(request):
     val2=int(request.POST['num2'])
     val3=val1+val2
     return render(request,'results.html',{'result':val3})
-# Create your views here.
+
+def dashboard(request):
+    return render(request,'dashboard.html')

@@ -17,3 +17,12 @@ def dashboard(request):
 def products(request):
     products=Product.objects.all()
     return render(request,'product.html',{'products':products})
+
+
+def customer(request, pk_test):
+    customer=Customer.objects.get(id=pk_test)
+    customers=Customer.objects.all()
+    orders=customer.order_set.all()
+    order_count=orders.count()
+    context={'customers':customers, 'cust':customer,'orders':orders,'ordcount':order_count}
+    return render(request,'customer.html',context)

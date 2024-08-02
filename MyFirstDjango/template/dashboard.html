@@ -1,23 +1,23 @@
 {% block content %}
-
-&nbsp;
-<h1> Dashboard</h1>
-
+<h1>Dashboard</h1>
 <table class="table">
-    <tr>
-       <th>URL</th>
-       <th>Name</th>
-       <th>Age</th>
-    </tr>
-    {% for customer in customers %}
-    <tr>
-       <td><a href="{% url 'customer' customer.id %}">View</a></td>
-       <td>{{customer.name}}</td>
-       <td>{{customer.age}}</td>
-    </tr>
-    {% endfor %}
-    <th>URL</th>
-        <td><a href="{% url 'customer' customer.id %}">View</a></td>
-    </table>
-    <a href="{% url 'home' %}"><button type="button" class="btn btn-success">Home Window</button></a>
-    {% endblock %}
+    <thead>
+        <tr>
+            <th>URL</th>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for customer in customers %}
+        <tr>
+            <td><a href="{% url 'customer' pk_test=customer.id %}">View</a></td>
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.age }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'home' %}"><button type="button" class="btn btn-success">Home Window</button></a>
+{% endblock %}

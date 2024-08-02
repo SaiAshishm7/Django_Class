@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from .models import *
 def home(request):
     return render (request,'home.html',{'name':'cyrus'})
 
@@ -20,8 +20,8 @@ def products(request):
 
 
 def customer(request, pk_test):
-    customer=Customer.objects.get(id=pk_test)
-    customers=Customer.objects.all()
+    customer= Customer.objects.get(id=pk_test)
+    customers= Customer.objects.all()
     orders=customer.order_set.all()
     order_count=orders.count()
     context={'customers':customers, 'cust':customer,'orders':orders,'ordcount':order_count}

@@ -56,22 +56,39 @@
             text-align: center;
             text-decoration: none;
         }
+        .error-messages {
+            color: red;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="login-container">
         <h1>Login</h1>
-        <form>
+
+        <!-- Display error messages if any -->
+        {% if messages %}
+            <div class="error-messages">
+                <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        
+        <form method="POST" action="{% url 'login' %}">  <!-- Updated action -->
+            {% csrf_token %}
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" value="cyrus9" required>
             
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" value="•••••" required>
+            <input type="password" id="password" name="password" required>
             
             <button type="submit" class="login-button">Login</button>
         </form>
     </div>
     
-    <a href="#" class="register-button">Register</a>
+    <a href="{% url 'register' %}" class="register-button">Register</a> <!-- Update this to the correct URL -->
 </body>
 </html>
